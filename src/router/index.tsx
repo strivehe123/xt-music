@@ -10,6 +10,7 @@ const Songs = lazy(() => import('@/pages/discover/c-pages/songs'))
 const Artist = lazy(() => import('@/pages/discover/c-pages/artist'))
 const Recommend = lazy(() => import('@/pages/discover/c-pages/recommend'))
 const Djradio = lazy(() => import('@/pages/discover/c-pages/djradio'))
+const Ranking = lazy(() => import('@/pages/discover/c-pages/ranking'))
 const routes: RouteObject[] = [
   { path: '/', element: <Navigate to="/discover" /> },
   {
@@ -39,6 +40,10 @@ const routes: RouteObject[] = [
       {
         path: '/discover/djradio',
         element: <Djradio />
+      },
+      {
+        path: '/discover/ranking',
+        element: <Ranking />
       }
     ]
   },

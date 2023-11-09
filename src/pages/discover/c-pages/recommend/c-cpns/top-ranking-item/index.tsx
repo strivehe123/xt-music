@@ -2,7 +2,8 @@ import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { TopRankingItemWrapper } from './style'
 import { getImageSize } from '@/utils/format'
-
+import { useAppDispatch } from '@/store'
+import { fetchSongDetail } from '@/store/features/player'
 interface IProps {
   children?: ReactNode
   itemData: any
@@ -10,9 +11,9 @@ interface IProps {
 const TopRankingItem: FC<IProps> = (props) => {
   const { itemData } = props
   const { tracks = [] } = itemData
-
+  const dispatch = useAppDispatch()
   function handlePlay(id: number) {
-    console.log(id)
+    dispatch(fetchSongDetail(id))
   }
   return (
     <TopRankingItemWrapper>

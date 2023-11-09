@@ -1,4 +1,10 @@
-import { getBanners, getHotRecommend, getNewAlbum, getRankList } from '@/services/modules/recommend'
+import {
+  getBanners,
+  getHotRecommend,
+  getNewAlbum,
+  getRankList,
+  getArtistList
+} from '@/services/modules/recommend'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 interface IInitialState {
@@ -6,12 +12,14 @@ interface IInitialState {
   hotRecommends: any[]
   newalbums: any[]
   ranklist: any[]
+  artists: any[]
 }
 const initialState: IInitialState = {
   banners: [],
   hotRecommends: [],
   newalbums: [],
-  ranklist: []
+  ranklist: [],
+  artists: []
 }
 export const fetchRecommendDataAction = createAsyncThunk(
   'recommend/fetchdata',
@@ -27,6 +35,10 @@ export const fetchRecommendDataAction = createAsyncThunk(
     // 获取新碟数据
     getNewAlbum().then((res) => {
       dispatch(changeNewAlbumsAction(res.albums))
+    })
+    // 获取入驻歌手
+    getArtistList().then((res) => {
+      dispatch(changeArtistsAction(res.artists))
     })
   }
 )
@@ -56,6 +68,9 @@ const recommendReducer = createSlice({
     },
     changeRankingListAction(state, { payload }) {
       state.ranklist = payload
+    },
+    changeArtistsAction(state, { payload }) {
+      state.artists = payload
     }
   }
 })
@@ -63,6 +78,7 @@ export const {
   changeBannersAction,
   changeRecommendAction,
   changeNewAlbumsAction,
-  changeRankingListAction
+  changeRankingListAction,
+  changeArtistsAction
 } = recommendReducer.actions
 export default recommendReducer.reducer

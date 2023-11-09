@@ -8,6 +8,8 @@ import TopBanner from './c-cpns/top-banner'
 import HotRecommend from './c-cpns/hot-recommend'
 import NewAlbum from './c-cpns/new-album'
 import TopRanking from './c-cpns/top-ranking'
+import UserLogin from './c-cpns/user-login'
+import SettleArtist from './c-cpns/settle-artist'
 interface IProps {
   children?: ReactNode
 }
@@ -28,7 +30,10 @@ const Recommend: FC<IProps> = () => {
           <NewAlbum />
           <TopRanking />
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <UserLogin />
+          <SettleArtist />
+        </div>
       </div>
     </RecommendWrapper>
   )

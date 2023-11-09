@@ -1,6 +1,7 @@
 import React, { memo, useRef, useState } from 'react'
 import type { FC, ReactNode, ElementRef } from 'react'
 import { Carousel } from 'antd'
+import classNames from 'classnames'
 import { BannerControl, BannerLeft, BannerRight, TopBannerSwipper } from './style'
 import { useAppSelector } from '@/store'
 interface IProps {
@@ -46,9 +47,9 @@ const TopBanner: FC<IProps> = () => {
             ))}
           </Carousel>
           <ul className="dots">
-            {banners?.map((item) => (
+            {banners?.map((item, index) => (
               <li key={item.imageUrl}>
-                <span className="item"></span>
+                <span className={classNames('item', { active: index === currentIndex })}></span>
               </li>
             ))}
           </ul>

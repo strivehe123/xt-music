@@ -19,18 +19,23 @@ export const BannerLeft = styled.div`
   }
   .dots {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     left: 0;
     right: 0;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     > li {
-      margin: 0 2px;
+      margin: 0 4px;
       .item {
         display: inline-block;
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: aliceblue;
+        &.active {
+          background-color: red;
+        }
       }
     }
   }
